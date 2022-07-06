@@ -5,8 +5,10 @@
     box-sizing: border-box;
 }
 
+/* Common */
 html {
     font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
 .clear {
@@ -17,9 +19,39 @@ html {
     color: #fff !important;
 }
 
-#main {
-
+.row {
+    margin-left: -8px;
+    margin-right: -8px;
 }
+
+.row::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.col {
+    float: left;
+    padding: 0px 8px;
+}
+
+.col-half {
+    width: 50%;
+}
+
+.col-full {
+    width: 100%;
+}
+
+.mt-8 {
+    margin-top: 8px!important;
+}
+
+.mt-16 {
+    margin-top: 16px!important;
+}
+
+/* Main */
 
 #header {
     Height: 46.5px;
@@ -89,17 +121,36 @@ html {
     line-height: 38.5px;
 }
 
+#header .menu-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#header .menu-btn,
 #header .search-btn {
     float: right;
     padding: 0 21px;
     
 }
 
+#header .menu-btn:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+#header .menu-btn:hover .menu-icon {
+    color: #000;
+}
+
+
 #header .search-btn:hover {
     background-color: #f44336;
     cursor: pointer;
 }
 
+
+#header .menu-icon,
 #header .search-icon {
     color:#fff;
     font-size: 20px;
@@ -109,8 +160,8 @@ html {
 #slider {
     position: relative;
     margin-top: 46.5px;
-    padding-top: 50%;
-    background: url('/assets/img/slider1/la.jpeg') top center / cover no-repeat;
+    padding-top: 55%;
+    background: url('../img/slider1/la.jpeg') top center / cover no-repeat;
 }
 
 #slider .text-content {
@@ -130,18 +181,17 @@ html {
 #slider .text-description {
     font-size: 15px;
     margin-top: 25px;
-}
-
-
-#content {
-   
+    text-shadow: 0 0 1px #000;
 }
 
 #content .content-section {
     width: 800px;
+    max-width: 100%;
     padding: 64px 0;
     margin-left: auto;
     margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 #content .section-heading {
@@ -230,7 +280,7 @@ html {
 
 /* Place */
 .places-list {
-    margin: 32px -8px 0px -8px;
+    margin: 16px -8px 0px -8px;
     padding-bottom: 64px;
 }
 
@@ -276,15 +326,13 @@ html {
     text-decoration: none;
     padding: 11px 16px;
     display: inline-block;
+    border: 0px;
+    text-align: center;
 }
 
 .place-content .place-buy-btn:hover {
     background-color: #ccc;
     color: #000;
-}
-
-#footer {
-
 }
 
 /* Buy ticket modal */
@@ -310,6 +358,7 @@ html {
     min-height: 200px;
     position: relative;
     max-width: calc(100% - 32px);
+    animation: modalFadeIn ease .6s;
 }
 
 .modal-container .modal-header {
@@ -386,4 +435,104 @@ html {
 
 .modal-footer a {
     color: #2196F3;
+}
+
+/*create animation for modal*/
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-140px);
+    }
+    to {    
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/* Contact form */
+.contact-content {
+    padding: 32px 0px; 
+}
+
+.contact-info {
+    font-size: 18px;
+}
+
+.contact-info i[class*="ti-"] {
+    width: 30px;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+.contact-info a {
+    color: #101aef;
+    opacity: 0.8;
+}
+
+.contact-info a:hover {
+    opacity: 1;
+}
+
+
+.contact-row-column {
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.contact-row-column .form-control {
+    padding: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.contact-row-column .send-btn {
+    float: right;
+    padding: 10px 16px;
+    color: #fff;
+    background-color: #000;
+    border:none;
+    text-align: center;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.contact-row-column .send-btn:hover {
+    color: #000;
+    background-color: #ccc;
+}
+
+/* Map section */
+.map-section img {
+    width: 100%;
+}
+
+/* Footer section */
+#footer {
+    padding: 64px 16px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+#footer .socials-list {
+    font-size: 24px;
+}
+
+#footer .socials-list a {
+    color:rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+}
+
+#footer .socials-list a:hover {
+    color:rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+#footer .copy-right {
+    color: rgba(0, 0, 0, 0.6);
+    margin: 15px 0px;
+    
+}
+
+#footer .copy-right a {
+    color: rgba(0, 0, 0, 0.6);
 }
